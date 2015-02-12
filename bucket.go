@@ -38,6 +38,10 @@ func NewBucket(c int64, freq time.Duration) *Bucket {
 	return b
 }
 
+func (b *Bucket)  Tokens (count int64) {
+	return atomic.LoadInt64(&b.tokens);
+}
+
 // Take attempts to take n tokens out of the bucket.
 // If tokens == 0, nothing will be taken.
 // If n <= tokens, n tokens will be taken.
